@@ -8,8 +8,8 @@ import websockets
 class WSConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         await self.accept()
+        ws = await websockets.connect("wss://www.bitmex.com/realtime?subscribe=liquidation:XBTUSD,liquidation:ETHUSD")
         while True:
-            ws = await websockets.connect("wss://www.bitmex.com/realtime?subscribe=liquidation:XBTUSD,liquidation:ETHUSD")
             try:
                 data = await aio.wait_for(ws.recv(), timeout=20)
             except aio.TimeoutError:
