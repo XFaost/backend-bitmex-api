@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Subscribes</title>
+
+        <link href="{% static 'bootstrap4/css/bootstrap-grid.min.css' %}" rel="stylesheet">
+        <link href="{% static 'interface/css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'base/css/style.css' %}" rel="stylesheet">
+
+    </head>
+
+
+    <body>
+        <div class="container">
+
+            <h1>Subscribes</h1>
+
+            <div id="messages" class="messages">
+
+                <div class="messages__row">
+                    <div class="messages__row__title">
+                        <div class="messages__row__title__timestamp">
+                            01.01.2001
+                        </div>
+                        <div class="messages__row__title__account">
+                            admin
+                        </div>
+                    </div>
+                    
+                    <div class="messages__row__subtitle">
+                        <div class="messages__row__subtitle__symbol">
+                            GOLD
+                        </div>
+                        <div class="messages__row__subtitle__price">
+                            12000
+                        </div>
+                    </div>   
+                </div>
+
+            </div>
+        </div>
+        
+        <script src="{% static 'base/js/script.js' %}"></script>
+    </body>
+</html>
