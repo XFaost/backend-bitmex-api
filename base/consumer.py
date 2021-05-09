@@ -23,6 +23,7 @@ class WSConsumer(AsyncWebsocketConsumer):
             else:
                 print('.', end='', flush=True)
                 print(data)
+                await self.send(data)
 
             # for i in range(1000):
             #     await self.send(json.dumps({'timestamp': i, 'account': '_account', 'symbol': '_symbol', 'price': '_price'}))
