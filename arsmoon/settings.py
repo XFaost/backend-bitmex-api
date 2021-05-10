@@ -52,7 +52,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'arsmoon.wsgi.application'
-ASGI_APPLICATION = 'arsmoon.asgi.application'
+ASGI_APPLICATION = 'arsmoon.routing.application'
 
 DATABASES = {
     'default': {
@@ -65,7 +65,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('127.0.0.1', 6379)]
+            'hosts': [('127.0.0.1', 6379)],
         }
     }
 }

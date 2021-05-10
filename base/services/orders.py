@@ -9,7 +9,7 @@ def create_order(request):
     if result['status'] != 201:
         return result
 
-    client = get_client(request, 0)
+    client = get_client(request)
 
     try:
         return client.Order.Order_new(**request.data).result()[0]
@@ -22,7 +22,7 @@ def view_active_orders(request):
     if result['status'] != 201:
         return result
 
-    client = get_client(request, 0)
+    client = get_client(request)
 
     try:
         return client.Order.Order_getOrders(filter=json.dumps({"open": True})).result()[0]
@@ -35,7 +35,7 @@ def view_active_order(request, order_id):
     if result['status'] != 201:
         return result
 
-    client = get_client(request, 0)
+    client = get_client(request)
 
     try:
         return client.Order.Order_getOrders(filter=json.dumps({"orderID": order_id})).result()[0]
@@ -48,7 +48,7 @@ def delete_order(request, order_id):
     if result['status'] != 201:
         return result
 
-    client = get_client(request, 1)
+    client = get_client(request)
 
     try:
         return client.Order.Order_cancel(orderID=order_id).result()[0]
