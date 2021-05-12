@@ -6,8 +6,7 @@ import urllib
 
 from websocket import create_connection
 
-
-
+from base.services.account import get_account_by_name
 
 
 class BitMexSubscribe:
@@ -16,7 +15,12 @@ class BitMexSubscribe:
     __VERB = "GET"
     __ENDPOINT = "/realtime"
 
-    def __init__(self, API_KEY, API_SECRET):
+    def __init__(self, account_name):
+        self.account_name = account_name
+        account = get_account_by_name(account_name)
+        API_KEY = account.api_key
+        API_SECRET = account.api_secret
+
         expires = int(time.time()) + 5
         signature = self.__bitmex_signature(API_SECRET, self.__VERB, self.__ENDPOINT, expires)
         self.ws = create_connection(self.__BITMEX_URL + self.__ENDPOINT)
@@ -66,7 +70,7 @@ class BitMexSubscribe:
 
         try:
             abstract_data['timestamp'] = data['data'][0]['timestamp']
-            abstract_data['account'] = '_account'
+            abstract_data['account'] = self.account_name
             abstract_data['symbol'] = data['data'][0]['symbol']
             abstract_data['price'] = data['data'][0]['lastPrice']
         except Exception as e:

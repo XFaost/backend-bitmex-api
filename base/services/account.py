@@ -16,9 +16,7 @@ def get_account(request):
 
 
 def get_client_by_account(account):
-    api_key = account.order_api_key
-    api_secret = account.order_api_secret
-    return bitmex(True, None, api_key, api_secret)
+    return bitmex(True, None, account.api_key, account.api_secret)
 
 
 def get_client(request):

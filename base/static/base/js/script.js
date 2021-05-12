@@ -12,7 +12,9 @@ var socket = new WebSocket(
 
 socket.onopen = () => {
     console.log("sending account");
-    socket.send(JSON.stringify({"name": "my"}));
+    socket.send(JSON.stringify({"action": "subscribe","account": "my"}));
+//    sleep(10000);
+//    socket.send(JSON.stringify({"action": "unsubscribe","account": "my"}));
 }
 socket.onclose = function(e) {
     console.error('Chat socket closed unexpectedly');

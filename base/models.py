@@ -13,3 +13,20 @@ class Account(models.Model):
     class Meta:
         verbose_name_plural = 'Accounts'
         db_table = 'account'
+
+
+class Order(models.Model):
+    orderID = models.CharField(max_length=36)
+    symbol = models.CharField(max_length=25)
+    volume = models.FloatField()
+    timestamp = models.DateTimeField()
+    side = models.CharField(max_length=4)
+    price = models.FloatField()
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.orderID
+
+    class Meta:
+        verbose_name_plural = 'Orders'
+        db_table = 'order'
